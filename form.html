@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 2 Project</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    padding:20px;
+}
+
+.container{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    width:450px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    background:#1e00ff;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#00b336;
+}
+
+.error{
+    color:red;
+    margin-top:10px;
+}
+
+.success{
+    color:green;
+    margin-top:10px;
+}
+
+ul{
+    list-style:none;
+    margin-top:15px;
+}
+
+li{
+    background:#eee;
+    padding:10px;
+    margin-top:10px;
+    border-radius:5px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.delete-btn{
+    background:red;
+}
+
+.delete-btn:hover{
+    background:darkred;
+}
+
+@media(max-width:768px){
+    .container{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
+        width:100%;
+        max-width:450px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Contact Form -->
+    <div class="card">
+        <h2>Contact Form</h2>
+
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Enter Name">
+            <input type="email" id="email" placeholder="Enter Email">
+            <textarea id="message" rows="4" placeholder="Enter Message"></textarea>
+
+            <button type="submit">Submit</button>
+
+            <p id="formMessage"></p>
+        </form>
+    </div>
+
+    <!-- To Do List -->
+    <div class="card">
+        <h2>To-Do List</h2>
+
+        <input type="text" id="taskInput" placeholder="Enter Task">
+        <button onclick="addTask()">Add Task</button>
+
+        <ul id="taskList"></ul>
+    </div>
+
+</div>
+
+<script>
+
+// Contact Form Validation
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    let name=document.getElementById("name").value.trim();
+    let email=document.getElementById("email").value.trim();
+    let message=document.getElementById("message").value.trim();
+
+    let result=document.getElementById("formMessage");
+
+    if(name==="" || email==="" || message===""){
+        result.innerHTML="Please fill all fields";
+        result.className="error";
+        return;
+    }
+
+    let emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(!email.match(emailPattern)){
+        result.innerHTML="Enter a valid email";
+        result.className="error";
+        return;
+    }
+
+    result.innerHTML="Form Submitted Successfully!";
+    result.className="success";
+
+    document.getElementById("contactForm").reset();
+});
+
+
+// To Do List
+
+function addTask(){
+
+    let taskInput=document.getElementById("taskInput");
+    let task=taskInput.value.trim();
+
+    if(task===""){
+        alert("Please enter a task");
+        return;
+    }
+
+    let li=document.createElement("li");
+
+    li.innerHTML=`
+        ${task}
+        <button class="delete-btn" onclick="this.parentElement.remove()">
+            Delete
+        </button>
+    `;
+
+    document.getElementById("taskList").appendChild(li);
+
+    taskInput.value="";
+}
+
+</script>
+
+</body>
+</html>

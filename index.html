@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    text-align:center;
+}
+
+header{
+    background:#0018b6;
+    color:white;
+    padding:30px;
+}
+
+section{
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2{
+    margin-bottom:10px;
+}
+
+ul{
+    list-style:none;
+}
+
+li{
+    margin:8px;
+}
+
+button{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    margin:20px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#218838;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>LISHALINI P</h1>
+    <p>MCA Student | Python Developer | Web Developer</p>
+</header>
+
+<section>
+    <h2>About Me</h2>
+    <p>
+        I am an MCA student passionate about Python,
+        Web Development, SQL, and Artificial Intelligence.
+    </p>
+</section>
+
+<section>
+    <h2>Skills</h2>
+    <ul>
+        <li>Python</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>SQL</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Projects</h2>
+    <p>Image Processing Application Like Automated Inspection System Development</p>
+    <p>Global Voyage Intelligent Travel Management System</p>
+</section>
+
+<button onclick="showMessage()">Contact Me</button>
+
+<script>
+function showMessage(){
+    alert("Thank you for visiting my portfolio!");
+}
+</script>
+
+</body>
+</html>
